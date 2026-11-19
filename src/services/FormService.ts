@@ -11,13 +11,16 @@ import { FormDTO } from "../models/FormDTO";
 import { AttachmentDTO } from "../models/AttachmentDTO";
 import { GlobalStorageService } from "./GlobalStorageService";
 import { LoginService } from "./LoginService";
+import { execFile } from "child_process";
+import { promisify } from "util";
 
+const execFileAsync = promisify(execFile);
 const { artifactFolderPath } = require("./projectRoot");
 
 export class FormService {
 
     private static getUri(server: ServerDTO): string {
-        return UtilsService.getHost(server) +  "/webdesk/ECMCardIndexService?wsdl";
+        return UtilsService.getHost(server) + "/webdesk/ECMCardIndexService?wsdl";
     }
 
     /**
@@ -42,7 +45,7 @@ export class FormService {
     /**
      * Retorna uma lista com o nome dos arquivos referente ao documento
      */
-     public static getFileNames(server: ServerDTO, documentId: Number): Promise<string[]> {
+    public static getFileNames(server: ServerDTO, documentId: Number): Promise<string[]> {
         const params = {
             username: server.username,
             password: server.password,
@@ -68,7 +71,7 @@ export class FormService {
     /**
      * Retorna o base64 referente ao arquivo
      */
-     public static getFileBase64(server: ServerDTO, documentId: number, version: number, fileName: string) {
+    public static getFileBase64(server: ServerDTO, documentId: number, version: number, fileName: string) {
         const params = {
             username: server.username,
             password: server.password,
@@ -90,7 +93,7 @@ export class FormService {
     /**
      * Retorna uma lista com os eventos do formulario
      */
-     public static getCustomizationEvents(server: ServerDTO, documentId: number): Promise<CustomizationEventsDTO[]> {
+    public static getCustomizationEvents(server: ServerDTO, documentId: number): Promise<CustomizationEventsDTO[]> {
         const params = {
             username: server.username,
             password: server.password,
@@ -115,7 +118,7 @@ export class FormService {
     /**
      * Retorna o formulário selecionado
      */
-     public static async getOptionSelected(server: ServerDTO): Promise<DocumentDTO|undefined> {
+    public static async getOptionSelected(server: ServerDTO): Promise<DocumentDTO | undefined> {
         const forms = await FormService.getForms(server);
         const items = forms.map(form => ({
             label: form.documentId + ' - ' + form.documentDescription,
@@ -165,7 +168,7 @@ export class FormService {
     /**
      * Realiza a importação de um formulário específico
      */
-     public static async import(resourceUri?: Uri) {
+    public static async import(resourceUri?: Uri) {
         const server = await ServerService.getSelect();
 
         if (!server) {
@@ -205,7 +208,7 @@ export class FormService {
     /**
      * Realiza a importação de vários formulários
      */
-     public static async importMany(resourceUri?: Uri) {
+    public static async importMany(resourceUri?: Uri) {
         const server = await ServerService.getSelect();
 
         if (!server) {
@@ -293,7 +296,7 @@ export class FormService {
         const params = selectedForm === "novo"
             ? await FormService.getCreateFormParams(context, server, formName)
             : await FormService.getUpdateFormParams(server, selectedForm)
-        ;
+            ;
 
         if (params === null) {
             return;
@@ -304,7 +307,7 @@ export class FormService {
 
         for (let attachmentPath of glob.sync(`${formFolder}/**/*.*`, {
             nodir: true,
-            ignore: { ignored: (path => isEvent.test(path.parentPath) ) }
+            ignore: { ignored: (path => isEvent.test(path.parentPath)) }
         })) {
             const pathParsed = parse(attachmentPath);
 
@@ -330,10 +333,11 @@ export class FormService {
             const response = selectedForm === "novo"
                 ? await client.createSimpleCardIndexWithDatasetPersisteTypeAsync(params)
                 : await client.updateSimpleCardIndexWithDatasetAndGeneralInfoAsync(params)
-            ;
+                ;
 
             const message = response[0]?.result?.item?.webServiceMessage;
             if (message === 'ok') {
+                await FormService.gitCommit(formFolder, formName);
                 window.showInformationMessage(`Formulário ${formName} exportado com sucesso!`);
             } else {
                 window.showErrorMessage(message || 'Verifique o id da Pasta onde irá salvar o Formulário!');
@@ -343,7 +347,7 @@ export class FormService {
         }
     }
 
-    private static async getCreateFormParams(context: ExtensionContext, server: ServerDTO, formName: string): Promise<FormDTO|null> {
+    private static async getCreateFormParams(context: ExtensionContext, server: ServerDTO, formName: string): Promise<FormDTO | null> {
         const newFormName = await window.showInputBox({
             prompt: "Qual o nome do Formulário?",
             value: formName
@@ -416,7 +420,7 @@ export class FormService {
         };
     }
 
-    private static async getUpdateFormParams(server: ServerDTO, selectedForm: DocumentDTO): Promise<FormDTO|null> {
+    private static async getUpdateFormParams(server: ServerDTO, selectedForm: DocumentDTO): Promise<FormDTO | null> {
         const newDatasetName = await window.showInputBox({
             prompt: "Qual o nome do Dataset do Formulário?",
             value: selectedForm.datasetName
@@ -472,7 +476,7 @@ export class FormService {
         };
     }
 
-    private static async getExportFormSelected(server: ServerDTO, formNameOrId: string|number) {
+    private static async getExportFormSelected(server: ServerDTO, formNameOrId: string | number) {
         const forms = await FormService.getForms(server);
         const items = [];
         let selected = null;
@@ -514,5 +518,30 @@ export class FormService {
         const endPosition = result.label.indexOf(" - ");
         const documentId = result.label.substring(0, endPosition);
         return forms.find(form => form.documentId.toString() === documentId);
+    }
+
+    private static async gitCommit(formFolder: string, formName: string) {
+        try {
+            await execFileAsync("git", [
+                "add",
+                "--",
+                formFolder
+            ], {
+                cwd: workspace.workspaceFolders?.[0]?.uri.fsPath
+            });
+
+            await execFileAsync("git", [
+                "commit",
+                "-m",
+                `feat(forms): exportação do formulário ${formName}`
+            ], {
+                cwd: workspace.workspaceFolders?.[0]?.uri.fsPath
+            });
+
+        } catch (error: any) {
+            window.showWarningMessage(
+                `Formulário exportado, mas não foi possível realizar o commit: ${error.message}`
+            );
+        }
     }
 }
