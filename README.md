@@ -1,3 +1,5 @@
+![Banner Fluig](assets/FluigTrackerBanner.webp)
+
 # Fluig — Extensão para Desenvolvimento
 
 <p align="center">
@@ -45,11 +47,14 @@ flowchart LR
 ### Tecnologias e plataformas
 
 <p align="center">
+  <img src="assets/FluigTrackerIcon.png"
+    alt="FluigTracker"
+  width="46">
+  </img>
   <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" />
   <img
   src="https://cdn.simpleicons.org/totvs"
   alt="TOTVS"
-    color="white"
   width="46"
 />
 </p> 
