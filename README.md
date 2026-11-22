@@ -59,6 +59,14 @@ flowchart LR
 />
 </p> 
 
+<p align="center">
+<img src="assets/FluigTrackerGifFlow.webp"
+    alt="FluigTrackerFlow"
+  width="600">
+  </img>
+</p>
+
+
 ---
 
 ## 📦 Instalação
