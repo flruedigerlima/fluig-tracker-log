@@ -45,8 +45,7 @@ flowchart LR
     A[Fluig] --> B[Exportação VS Code]
     B --> C[Git Commit]
     C --> D[Git Push]
-    D --> E[Repositório compartilhado no GitHub]
-    E --> F[Histórico da equipe]
+    D --> E[Histórico compartilhado no GitHub]
 ```
 
 <p align="center">
