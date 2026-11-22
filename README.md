@@ -22,8 +22,9 @@ Dessa forma, o histórico de exportações pode ser acompanhado diretamente pelo
 
 Como funciona
 <p align="center">
+  <br>
   <img src="assets/FluigTrackerGifFlowIcon.gif" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
-  <div align="center"> <img src="assets/fluxo-git.gif" alt="Fluxo animado: Fluig, exportação concluída, Git Commit, Git Push e GitHub" width="100%" /> <br /> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
+  <div align="center"><br> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
 </p>
 
 Tecnologias e plataformas
