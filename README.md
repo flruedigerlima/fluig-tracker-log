@@ -22,11 +22,12 @@ Dessa forma, o histórico de exportações pode ser acompanhado diretamente pelo
 
 Como funciona
 <p align="center">
-  <img src="assets/FluigTrackerGifFlowIcon.webp" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
+  <img src="assets/FluigTrackerGifFlowIcon.gif" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
+  <div align="center"> <img src="assets/fluxo-git.gif" alt="Fluxo animado: Fluig, exportação concluída, Git Commit, Git Push e GitHub" width="100%" /> <br /> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
 </p>
-<div align="center"> <img src="assets/fluxo-git.gif" alt="Fluxo animado: Fluig, exportação concluída, Git Commit, Git Push e GitHub" width="100%" /> <br /> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
+
 Tecnologias e plataformas
-<p align="center"> <img src="assets/FluigTrackerIcon.png" alt="FluigTracker" height="48" /> <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" height="48" /> <img src="https://cdn.simpleicons.org/totvs" alt="TOTVS" height="48" /> </p> <p align="center"> <img src="assets/FluigTrackerGifLoad.gif" alt="FluigTracker em ação" width="120" /> </p>
+<p align="center"> <img src="assets/FluigTrackerIcon.png" alt="FluigTracker" height="48" /> <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" height="48" /> <img src="https://cdn.simpleicons.org/totvs" alt="TOTVS" height="48" /> </p> <p align="center"> </p>
 
 <a name="instalacao"></a>
 
