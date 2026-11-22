@@ -42,7 +42,7 @@ Esse registro também ajuda a equipe a entender o que mudou entre exportações 
 
 ```mermaid
 flowchart LR
-    A[Fluig] --> B[Exportação concluída]
+    A[Fluig] --> B[Exportação VS Code]
     B --> C[Git Commit]
     C --> D[Git Push]
     D --> E[Repositório compartilhado no GitHub]
