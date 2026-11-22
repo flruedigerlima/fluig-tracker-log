@@ -44,6 +44,13 @@ flowchart LR
     D --> E["GitHub"]
 ```
 
+<p align="center">
+<img src="assets/FluigTrackerGifFlow.webp"
+    alt="FluigTrackerFlow"
+  width="800">
+  </img>
+</p>
+
 ### Tecnologias e plataformas
 
 <p align="center">
@@ -58,14 +65,6 @@ flowchart LR
   width="46"
 />
 </p> 
-
-<p align="center">
-<img src="assets/FluigTrackerGifFlow.webp"
-    alt="FluigTrackerFlow"
-  width="600">
-  </img>
-</p>
-
 
 ---
 
