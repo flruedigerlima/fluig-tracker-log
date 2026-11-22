@@ -1,95 +1,73 @@
-![Banner Fluig](assets/FluigTrackerBannerReload.webp)
+<!-- Arquivos usados por este README (pasta assets/): FluigTrackerBanner.webp, FluigTrackerIcon.png, FluigTrackerGifLoad.gif, fluxo-git.gif -->
 
-# Fluig — Extensão para Desenvolvimento
+<a name="top"></a>
 
+<div align="center"> <img src="assets/FluigTrackerBannerReload.webp" alt="Banner Fluig Tracker" /> <h1>Fluig — Extensão para Desenvolvimento</h1> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=1200&color=1F8BD1&center=true&vCenter=true&width=720&height=44&lines=Desenvolvimento+Fluig+com+integra%C3%A7%C3%A3o+Git;Cada+exporta%C3%A7%C3%A3o+vira+um+commit+autom%C3%A1tico;Hist%C3%B3rico+de+exporta%C3%A7%C3%B5es+direto+no+GitHub" alt="Desenvolvimento Fluig com integração Git" /> <p> <img src="https://img.shields.io/badge/TOTVS-FLUIG-0072C6?style=for-the-badge" alt="TOTVS Fluig" /> <img src="https://img.shields.io/badge/VS%20Code-Extension-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code Extension" /> <img src="https://img.shields.io/badge/Community-Edition-8A63D2?style=for-the-badge" alt="Community Edition" /> </p> <p> <a href="https://github.com/fluiggers/fluig-vscode-extension"><img src="https://img.shields.io/badge/Baseado%20em-Fluiggers-181717?style=flat-square&logo=github&logoColor=white" alt="Baseado em Fluiggers" /></a> <img src="https://img.shields.io/badge/Package-VSIX-orange?style=flat-square" alt="Package VSIX" /> </p> <p> <a href="../../releases/latest"><img src="https://img.shields.io/badge/Baixar-%C3%9Altima%20vers%C3%A3o-3FB950?style=for-the-badge&logo=github&logoColor=white" alt="Baixar a última versão" /></a> </p> <p> <a href="#sobre">Sobre</a> &nbsp;•&nbsp; <a href="#git">Integração Git</a> &nbsp;•&nbsp; <a href="#instalacao">Instalação</a> &nbsp;•&nbsp; <a href="#creditos">Créditos</a> </p> </div>
+
+<a name="sobre"></a>
+
+✨ Sobre o projeto
+
+Esta é uma versão alternativa da Fluig — Extensão para Desenvolvimento, originalmente desenvolvida pela comunidade Fluiggers.
+
+A proposta é preservar a experiência e os recursos da extensão original, adicionando uma integração com Git para registrar automaticamente as exportações realizadas no Fluig.
+
+<a name="git"></a>
+
+🔗 Integração com Git
+
+A funcionalidade adicional permite registrar automaticamente uma exportação bem-sucedida, criar um commit e executar o push para um repositório remoto.
+
+Dessa forma, o histórico de exportações pode ser acompanhado diretamente pelo GitHub, sem precisar registrar cada operação manualmente.
+
+Como funciona
 <p align="center">
-  <img src="https://img.shields.io/badge/TOTVS-FLUIG-0072C6?style=for-the-badge" alt="TOTVS Fluig" />
-  <img src="https://img.shields.io/badge/VS%20Code-Extension-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Extensão para VS Code" />
-  <img src="https://img.shields.io/badge/Community-Edition-8A63D2?style=for-the-badge" alt="Community Edition" />
+  <img src="assets/FluigTrackerGifFlowIcon.webp" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
 </p>
+<div align="center"> <img src="assets/fluxo-git.gif" alt="Fluxo animado: Fluig, exportação concluída, Git Commit, Git Push e GitHub" width="100%" /> <br /> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
+Tecnologias e plataformas
+<p align="center"> <img src="assets/FluigTrackerIcon.png" alt="FluigTracker" height="48" /> <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" height="48" /> <img src="https://cdn.simpleicons.org/totvs" alt="TOTVS" height="48" /> </p> <p align="center"> <img src="assets/FluigTrackerGifLoad.gif" alt="FluigTracker em ação" width="120" /> </p>
 
-<p align="center">
-  <strong>Desenvolvimento Fluig com integração Git</strong><br />
-  Uma alternativa comunitária para desenvolver com TOTVS Fluig no Visual Studio Code.
-</p>
+<a name="instalacao"></a>
 
-<p align="center">
-  <a href="https://github.com/fluiggers/fluig-vscode-extension">
-    <img src="https://img.shields.io/badge/Baseado%20em-Fluiggers-181717?style=flat-square&logo=github&logoColor=white" alt="Projeto original Fluiggers" />
-  </a>
-  <img src="https://img.shields.io/badge/Package-VSIX-orange?style=flat-square" alt="Pacote VSIX" />
-</p>
+📦 Instalação
 
----
+A instalação é feita manualmente por meio do pacote .vsix.
 
-## ✨ Sobre o projeto
+Etapa	Instrução
+01	Acesse a seção Releases.
+02	Baixe o arquivo .vsix da versão desejada.
+03	Abra o Visual Studio Code.
+04	Pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.
+05	Execute Extensions: Install from VSIX....
+06	Selecione o arquivo baixado.
+<details> <summary><b>💻 Prefere o terminal?</b></summary> <br />
+bash
+code --install-extension caminho/do/arquivo.vsix
+</details>
 
-Esta é uma versão alternativa da **Fluig — Extensão para Desenvolvimento**, originalmente desenvolvida pela comunidade [Fluiggers](https://github.com/fluiggers/fluig-vscode-extension).
+[!WARNING] A integração Git depende da configuração do repositório de atividade no ambiente local. O pacote atual utiliza um caminho local específico, que precisa ser adaptado para outros ambientes.
 
-A proposta é preservar a experiência e os recursos da extensão original e acrescentar integração com Git para registrar automaticamente as exportações realizadas no Fluig.
+<a name="creditos"></a>
 
-## 🔗 Integração com Git
+🧩 Créditos e projeto de origem
 
-Após uma exportação bem-sucedida, a extensão pode criar um commit e enviá-lo ao repositório remoto. Assim, as alterações ficam registradas no histórico do GitHub sem que cada operação precise ser anotada manualmente.
+Projeto baseado na extensão Fluig — Extensão para Desenvolvimento, criada pela comunidade Fluiggers.
 
-### Um histórico compartilhado para a equipe
+<div align="center">
 
-Quando dois desenvolvedores trabalham no mesmo ambiente Fluig, manter as exportações em um repositório Git compartilhado é uma forma simples de acompanhar as mudanças. Cada commit registra autor, data e conteúdo alterado, ajudando a identificar quem realizou a última exportação e facilitando a consulta do histórico da atividade.
+Fluiggers
 
-Esse registro também ajuda a equipe a entender o que mudou entre exportações e a recuperar versões anteriores quando necessário. Para que o histórico identifique corretamente cada pessoa, cada desenvolvedor deve usar sua própria identidade Git.
+</div>
 
-### Como funciona
+[!NOTE] Esta é uma iniciativa comunitária independente, com uma funcionalidade adicional, sem vínculo oficial com a TOTVS ou representação oficial da equipe Fluiggers.
 
-```mermaid
-flowchart LR
-    A[Fluig] --> B[Exportação VS Code]
-    B --> C[Git Commit]
-    C --> D[Git Push]
-    D --> E[Histórico compartilhado no GitHub]
-```
+<div align="center">
 
-<p align="center">
-  <img src="assets/FluigTrackerGifFlow.webp" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
-</p>
+<strong>Desenvolvido com 💙 pela comunidade.</strong><br /> <sub>Fluig + Visual Studio Code + Git + GitHub</sub>
 
-### Tecnologias e plataformas
+<br />
 
-<p align="center">
-  <img src="assets/FluigTrackerIcon.png" alt="FluigTracker" width="46" />
-  <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" />
-  <img src="https://cdn.simpleicons.org/totvs" alt="TOTVS" width="46" />
-</p>
+<a href="#top">⬆ Voltar ao topo</a>
 
----
-
-## 📦 Instalação
-
-A instalação é feita manualmente por meio do pacote `.vsix`:
-
-| Etapa | Instrução |
-|:---:|---|
-| **01** | Acesse a seção [Releases](../../releases). |
-| **02** | Baixe o arquivo `.vsix` da versão desejada. |
-| **03** | Abra o Visual Studio Code. |
-| **04** | Pressione `Ctrl + Shift + P`. |
-| **05** | Execute `Extensions: Install from VSIX...`. |
-| **06** | Selecione o arquivo baixado. |
-
-> **Atenção:** a integração Git depende da configuração do repositório de atividade no ambiente local. O pacote atual utiliza um caminho local específico, que precisa ser adaptado para outros ambientes.
-
----
-
-## 🧩 Créditos e projeto de origem
-
-Projeto baseado na extensão **Fluig — Extensão para Desenvolvimento**, criada pela comunidade [Fluiggers](https://github.com/fluiggers/fluig-vscode-extension).
-
-[![Conheça o projeto original Fluiggers](https://img.shields.io/badge/Conheça%20o%20projeto%20original-Fluiggers-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/fluiggers/fluig-vscode-extension)
-
-Esta é uma iniciativa comunitária independente, com uma funcionalidade adicional, sem vínculo oficial com a TOTVS ou representação oficial da equipe Fluiggers.
-
----
-
-<p align="center">
-  <strong>Desenvolvido com 💙 pela comunidade</strong><br />
-  <sub>Fluig + Visual Studio Code + Git + GitHub</sub>
-</p>
+</div>
