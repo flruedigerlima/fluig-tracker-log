@@ -1,4 +1,4 @@
-![Banner Fluig](assets/FluigTrackerBanner.webp)
+![Banner Fluig](assets/FluigTrackerBannerReload.webp)
 
 # Fluig — Extensão para Desenvolvimento
 
