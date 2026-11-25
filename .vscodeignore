@@ -20,3 +20,4 @@ templates/**
 test/**
 webpack.config.js
 debug.log
+fluig-tracker-source-*.zip

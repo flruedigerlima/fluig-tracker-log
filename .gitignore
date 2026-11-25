@@ -3,6 +3,7 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+fluig-tracker-source-*.zip
 .idea/
 .validation-cache/
 runtime/java/
