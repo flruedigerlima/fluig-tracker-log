@@ -68,7 +68,7 @@ Configure um repositório Git pelo menu do formulário. Após cada exportação 
 
 ## Créditos à comunidade Fluiggers
 
-<p align="center"><img src="./images/icon.png" width="96" alt="Ícone da comunidade Fluiggers"> &nbsp; → &nbsp; <img src="./images/FluigTrackerGrey.png" width="96" alt="Logo do Fluig Tracker"></p>
+<p align="center"><img src="./images/icon.png" width="96" alt="Ícone da comunidade Fluiggers"> &nbsp; → &nbsp; <img src="./images/FluigTracker.png" width="96" alt="Logo do Fluig Tracker"></p>
 
 A seta representa a evolução da extensão original da comunidade Fluiggers para o Fluig Tracker. **Nada disso seria possível sem a extensão original.** O ícone colorido do Fluig Tracker é usado como ícone da extensão; a versão cinza aparece na barra lateral do VS Code.
 
