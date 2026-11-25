@@ -14,47 +14,47 @@ export class WorkflowExtension {
     public static activate(context: vscode.ExtensionContext): void {
         WorkflowProcessArtifactService.initialize(context);
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newWorkflowProcess",
+            "fluig-tracker-vscode-extension.newWorkflowProcess",
             (folderUri?: vscode.Uri) => WorkflowProcessScaffoldService.create(context, folderUri)
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newFluigProject",
+            "fluig-tracker-vscode-extension.newFluigProject",
             (folderUri?: vscode.Uri) => FluigProjectService.create(context, folderUri)
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newWorkflowEvent",
+            "fluig-tracker-vscode-extension.newWorkflowEvent",
             WorkflowExtension.createWorkflowEvent
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportWorkflowEvent",
+            "fluig-tracker-vscode-extension.exportWorkflowEvent",
             WorkflowExtension.exportWorkflowEvent
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.generateWorkflowProcessArtifact",
+            "fluig-tracker-vscode-extension.generateWorkflowProcessArtifact",
             WorkflowProcessArtifactService.generate
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.validateWorkflowProcessExport",
+            "fluig-tracker-vscode-extension.validateWorkflowProcessExport",
             WorkflowProcessExportService.validate
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportWorkflowProcess",
+            "fluig-tracker-vscode-extension.exportWorkflowProcess",
             WorkflowProcessExportService.export
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newMechanism",
+            "fluig-tracker-vscode-extension.newMechanism",
             WorkflowExtension.createMechanism
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importManyMechanisms",
+            "fluig-tracker-vscode-extension.importManyMechanisms",
             AttributionMechanismService.importMany
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importMechanism",
+            "fluig-tracker-vscode-extension.importMechanism",
             AttributionMechanismService.import
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportMechanism",
+            "fluig-tracker-vscode-extension.exportMechanism",
             WorkflowExtension.exportMechanism
         ));
     }

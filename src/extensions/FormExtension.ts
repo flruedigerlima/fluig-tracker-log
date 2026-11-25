@@ -23,23 +23,23 @@ export class FormExtension {
 
     public static activate(context: vscode.ExtensionContext): void {
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newForm",
+            "fluig-tracker-vscode-extension.newForm",
             FormExtension.createForm
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newFormEvent",
+            "fluig-tracker-vscode-extension.newFormEvent",
             FormExtension.createFormEvent
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importManyForm",
+            "fluig-tracker-vscode-extension.importManyForm",
             FormService.importMany
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importForm",
+            "fluig-tracker-vscode-extension.importForm",
             FormService.import
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportForm",
+            "fluig-tracker-vscode-extension.exportForm",
             function (fileUri: vscode.Uri) {
                 // Ativado pela Tecla Atalho
                 if (!fileUri) {

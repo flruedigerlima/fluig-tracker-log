@@ -7,7 +7,7 @@ export class LibraryExtension {
 
     public static activate(context: ExtensionContext): void {
         context.subscriptions.push(commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.installDeclarationLibrary",
+            "fluig-tracker-vscode-extension.installDeclarationLibrary",
             LibraryExtension.installDeclarationLibrary
         ));
     }

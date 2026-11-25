@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import { ServerView } from '../views/ServerView';
 import { Server } from '../models/Server';
 import { DatasetView } from '../views/DatasetView';
+import { getFluigTrackerSetting, updateFluigTrackerSetting } from '../services/FluigTrackerConfigurationService';
 
 export class ServerItem extends vscode.TreeItem {
     constructor(
@@ -77,8 +78,7 @@ export class ServerItemProvider implements vscode.TreeDataProvider<ServerItem> {
     }
 
     public async changeConfigPath(): Promise<void> {
-        const config = vscode.workspace.getConfiguration("fluiggers");
-        let customPath = config.get<string>("serverConfigPath", "");
+        let customPath = getFluigTrackerSetting("serverConfigPath", "");
 
         const fileUri = await vscode.window.showSaveDialog({
             title: "Arquivo de Configuração de Servidores (não será sobreescrito)",
@@ -96,7 +96,7 @@ export class ServerItemProvider implements vscode.TreeDataProvider<ServerItem> {
             vscode.window.showInformationMessage("Caminho do arquivo de configuração será na pasta .vscode");
         }
 
-        await config.update('serverConfigPath', customPath, vscode.ConfigurationTarget.Global);
+        await updateFluigTrackerSetting('serverConfigPath', customPath, vscode.ConfigurationTarget.Global);
 
         ServerService.updateConfigPath();
         this.serverConfigListener();

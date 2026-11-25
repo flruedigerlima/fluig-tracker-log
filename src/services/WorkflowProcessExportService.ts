@@ -5,6 +5,7 @@ import { ServerDTO } from "../models/ServerDTO";
 import { LoginService } from "./LoginService";
 import { ServerService } from "./ServerService";
 import { UtilsService } from "./UtilsService";
+import { getFluigTrackerSetting } from "./FluigTrackerConfigurationService";
 import { WorkflowProcessArtifactService } from "./WorkflowProcessArtifactService";
 
 const { FluigProcessExportService: fluigProcessExportService } = require("./FluigProcessExportService");
@@ -178,9 +179,7 @@ export class WorkflowProcessExportService {
     }
 
     private static async detectVersion(server: ServerDTO): Promise<FluigVersionChoice> {
-        const configured = vscode.workspace
-            .getConfiguration("fluiggers")
-            .get<string>("fluigRuntimeVersion", "1.8.2");
+        const configured = getFluigTrackerSetting("fluigRuntimeVersion", "1.8.2");
         if (server.hasBrowser) {
             // O export de processo exige usuário e senha; não abre o navegador só para ler a versão.
             return { value: configured, detected: false, reason: "servidor com login pelo navegador" };
@@ -224,7 +223,7 @@ export class WorkflowProcessExportService {
         const release = prepared.options.release ? "sim" : "não";
         const version = prepared.fluigVersion.detected
             ? prepared.fluigVersion.value || "desconhecida"
-            : `${prepared.fluigVersion.value || "desconhecida"} (versão não detectada: ${prepared.fluigVersion.reason}; usando fluiggers.fluigRuntimeVersion)`;
+            : `${prepared.fluigVersion.value || "desconhecida"} (versão não detectada: ${prepared.fluigVersion.reason}; usando fluigTracker.fluigRuntimeVersion)`;
         const warnings = prepared.fluigVersion.warnings?.length
             ? ["", "Avisos do ECM30:", ...prepared.fluigVersion.warnings.map(warning => `- ${warning}`)]
             : [];

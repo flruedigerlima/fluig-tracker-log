@@ -4,6 +4,7 @@ import * as vscode from "vscode";
 import { readEcm30Events } from "../core/ecm30/events";
 import { generateEcm30 } from "../core/ecm30/generate";
 import { parseFluigVersion } from "../core/fluig-client/version";
+import { getFluigTrackerSetting } from "./FluigTrackerConfigurationService";
 
 const {
     writeEcm30Artifact,
@@ -61,7 +62,7 @@ export class WorkflowProcessArtifactService {
 
     /**
      * Com serverVersion definido (exportação, inclusive "" = versão desconhecida), regenera sempre, porque o
-     * ECM30 do save usa fluiggers.fluigRuntimeVersion. Sem serverVersion e com os artefatos atualizados, não
+     * ECM30 do save usa fluigTracker.fluigRuntimeVersion. Sem serverVersion e com os artefatos atualizados, não
      * gera e devolve []. Caso contrário, devolve os avisos da geração.
      */
     public static async ensureGenerated(processUri: vscode.Uri, serverVersion?: string): Promise<string[]> {
@@ -120,9 +121,7 @@ export class WorkflowProcessArtifactService {
         if (!isWorkflowDiagramProcessPath(uri.fsPath)) {
             return;
         }
-        const enabled = vscode.workspace
-            .getConfiguration("fluiggers")
-            .get<boolean>("generateEcm30OnSave", true);
+        const enabled = getFluigTrackerSetting("generateEcm30OnSave", true);
         if (!enabled) {
             return;
         }
@@ -204,9 +203,9 @@ export class WorkflowProcessArtifactService {
 
         const processId = path.basename(uri.fsPath, ".process");
         const processText = fs.readFileSync(uri.fsPath, "utf8");
-        // No save não há servidor: vale fluiggers.fluigRuntimeVersion; vazio = versão desconhecida (todos os campos).
+        // No save não há servidor: vale fluigTracker.fluigRuntimeVersion; vazio = versão desconhecida (todos os campos).
         const raw = serverVersion
-            || vscode.workspace.getConfiguration("fluiggers").get<string>("fluigRuntimeVersion", "1.8.2");
+            || getFluigTrackerSetting("fluigRuntimeVersion", "1.8.2");
         // Texto livre ("v1.8.2", "1.8", "abc"): só x.y.z vale; senão gera como versão desconhecida.
         const version = raw ? parseFluigVersion(raw) : undefined;
         const generated = generateEcm30(
@@ -214,7 +213,7 @@ export class WorkflowProcessArtifactService {
             version
         );
         if (raw && !version) {
-            generated.warnings.push(`fluiggers.fluigRuntimeVersion ("${raw}") não é uma versão x.y.z; gerado como versão desconhecida.`);
+            generated.warnings.push(`fluigTracker.fluigRuntimeVersion ("${raw}") não é uma versão x.y.z; gerado como versão desconhecida.`);
         }
 
         const written = writeEcm30Artifact(ecm30PathForProcess(uri.fsPath), Buffer.from(generated.xml, "utf8"));

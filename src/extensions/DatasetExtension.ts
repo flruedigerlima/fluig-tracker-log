@@ -10,27 +10,27 @@ export class DatasetExtension {
 
     public static activate(context: vscode.ExtensionContext): void {
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newDataset",
+            "fluig-tracker-vscode-extension.newDataset",
             DatasetExtension.createDataset
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importManyDataset",
+            "fluig-tracker-vscode-extension.importManyDataset",
             DatasetService.importMany
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importDataset",
+            "fluig-tracker-vscode-extension.importDataset",
             DatasetService.import
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportDataset",
+            "fluig-tracker-vscode-extension.exportDataset",
             DatasetExtension.exportDataset
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.searchDataset",
+            "fluig-tracker-vscode-extension.searchDataset",
             DatasetExtension.searchDataset(context)
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportDatasetFolder",
+            "fluig-tracker-vscode-extension.exportDatasetFolder",
             DatasetExtension.exportDatasetFolder
         ));
     }

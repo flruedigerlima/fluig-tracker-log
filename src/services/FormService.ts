@@ -11,10 +11,8 @@ import { FormDTO } from "../models/FormDTO";
 import { AttachmentDTO } from "../models/AttachmentDTO";
 import { GlobalStorageService } from "./GlobalStorageService";
 import { LoginService } from "./LoginService";
-import { execFile } from "child_process";
-import { promisify } from "util";
+import { LogRepositoryService } from "./LogRepositoryService";
 
-const execFileAsync = promisify(execFile);
 const { artifactFolderPath } = require("./projectRoot");
 
 export class FormService {
@@ -337,8 +335,14 @@ export class FormService {
 
             const message = response[0]?.result?.item?.webServiceMessage;
             if (message === 'ok') {
-                await FormService.gitCommit(formFolder, formName);
                 window.showInformationMessage(`Formulário ${formName} exportado com sucesso!`);
+
+                // O log roda em segundo plano e não interfere na exportação já concluída no Fluig.
+                void LogRepositoryService.registerExport(context, {
+                    process: formName,
+                    operation: "Exportação Fluig",
+                    fallbackUser: server.username
+                });
             } else {
                 window.showErrorMessage(message || 'Verifique o id da Pasta onde irá salvar o Formulário!');
             }
@@ -520,28 +524,4 @@ export class FormService {
         return forms.find(form => form.documentId.toString() === documentId);
     }
 
-    private static async gitCommit(formFolder: string, formName: string) {
-        try {
-            await execFileAsync("git", [
-                "add",
-                "--",
-                formFolder
-            ], {
-                cwd: workspace.workspaceFolders?.[0]?.uri.fsPath
-            });
-
-            await execFileAsync("git", [
-                "commit",
-                "-m",
-                `feat(forms): exportação do formulário ${formName}`
-            ], {
-                cwd: workspace.workspaceFolders?.[0]?.uri.fsPath
-            });
-
-        } catch (error: any) {
-            window.showWarningMessage(
-                `Formulário exportado, mas não foi possível realizar o commit: ${error.message}`
-            );
-        }
-    }
 }

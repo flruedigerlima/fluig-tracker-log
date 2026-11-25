@@ -1,5 +1,8 @@
 # Change Log
 
+## 3.0.31
+- Adição do Fluig Tracker
+
 ## 3.0.3-alpha
 
 - Melhora a segurança ao instalar a FluiggersWidget, efetuando o download de um commit específico e realizando checksum;

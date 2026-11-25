@@ -70,7 +70,7 @@ export class FluigProjectService {
             }
 
             const processUri = vscode.Uri.joinPath(projectUri, "workflow", "diagrams", `${code}.process`);
-            await vscode.commands.executeCommand("vscode.openWith", processUri, "fluigBpmn.processEditor");
+            await vscode.commands.executeCommand("vscode.openWith", processUri, "fluigTracker.processEditor");
             void vscode.window.showInformationMessage(`Projeto ${code} criado em ${vscode.workspace.asRelativePath(projectUri)}.`);
         } catch (error) {
             void vscode.window.showErrorMessage(

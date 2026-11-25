@@ -3,6 +3,7 @@ import { Client, createClientAsync, IOptions } from 'soap';
 import { ServerDTO } from '../models/ServerDTO';
 import { UtilsService } from './UtilsService';
 import * as puppeteer from 'puppeteer-core';
+import { getFluigTrackerSetting, updateFluigTrackerSetting } from './FluigTrackerConfigurationService';
 
 export class LoginService {
 
@@ -96,8 +97,7 @@ export class LoginService {
     private static async tryBrowserAuthenticate(server: ServerDTO) {
         let browser: puppeteer.Browser|null = null;
 
-        const config = workspace.getConfiguration('fluiggers');
-        let customPath = config.get<string>('browserPath', "");
+        let customPath = getFluigTrackerSetting('browserPath', "");
 
         if (!customPath.length) {
             const fileUri = await window.showOpenDialog({
@@ -111,7 +111,7 @@ export class LoginService {
 
             if (fileUri && fileUri[0]) {
                 customPath = fileUri[0].fsPath;
-                await config.update('browserPath', customPath, ConfigurationTarget.Global);
+                await updateFluigTrackerSetting('browserPath', customPath, ConfigurationTarget.Global);
             } else {
                 window.showErrorMessage("Preencha o caminho até o seu navegador nas configurações da Extensão Fluiggers!");
                 return "";

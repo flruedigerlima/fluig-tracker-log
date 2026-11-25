@@ -1,420 +1,115 @@
-# Fluig - Extensão para Desenvolvimento no VSCode
+<!-- Arquivos usados por este README (pasta assets/): FluigTrackerBanner.webp, FluigTrackerIcon.png, FluigTrackerGifLoad.gif, fluxo-git.gif -->
 
-![GitHub](https://img.shields.io/github/license/fluiggers/fluig-vscode-extension)
+<a name="top"></a>
 
-Extensão desenvolvida pela comunidade de desenvolvedores Fluig para facilitar o desenvolvimento na plataforma
-TOTVS Fluig utilizando o VSCode.
+<div align="center"> <img src="assets/FluigTrackerBannerReload.webp" alt="Banner Fluig Tracker" /> <h1>Fluig Tracker — Extensão para Desenvolvimento</h1> <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3200&pause=1200&color=1F8BD1&center=true&vCenter=true&width=720&height=44&lines=Desenvolvimento+Fluig+com+integra%C3%A7%C3%A3o+Git;Cada+exporta%C3%A7%C3%A3o+vira+um+commit+autom%C3%A1tico;Hist%C3%B3rico+de+exporta%C3%A7%C3%B5es+direto+no+GitHub" alt="Desenvolvimento Fluig com integração Git" /> <p> <img src="https://img.shields.io/badge/TOTVS-FLUIG-0072C6?style=for-the-badge" alt="TOTVS Fluig" /> <img src="https://img.shields.io/badge/VS%20Code-Extension-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code Extension" /> <img src="https://img.shields.io/badge/Community-Edition-8A63D2?style=for-the-badge" alt="Community Edition" /> </p> <p> <a href="https://github.com/fluiggers/fluig-vscode-extension"><img src="https://img.shields.io/badge/Baseado%20em-Fluiggers-181717?style=flat-square&logo=github&logoColor=white" alt="Baseado em Fluiggers" /></a> <img src="https://img.shields.io/badge/Package-VSIX-orange?style=flat-square" alt="Package VSIX" /> </p> <p> <a href="../../releases/latest"><img src="https://img.shields.io/badge/Baixar-%C3%9Altima%20vers%C3%A3o-3FB950?style=for-the-badge&logo=github&logoColor=white" alt="Baixar a última versão" /></a> </p> <p> <a href="#sobre">Sobre</a> &nbsp;•&nbsp; <a href="#git">Integração Git</a> &nbsp;•&nbsp; <a href="#instalacao">Instalação</a> &nbsp;•&nbsp; <a href="#creditos">Créditos</a> </p> </div>
 
-![Menu de Contexto](images/menu_contexto.jpg)
+<a name="sobre"></a>
 
-## ATENÇÃO
+✨ Sobre o projeto
 
-**Todos os direitos sobre a plataforma TOTVS Fluig, suas marcas, seus produtos e sua documentação oficial pertencem à TOTVS e/ou aos respectivos titulares.** Este repositório não é mantido, aprovado ou patrocinado pela TOTVS e não inclui código proprietário do Fluig.
+O Fluig Tracker é uma versão independente derivada da extensão de desenvolvimento Fluig, criada originalmente pela comunidade Fluiggers.
 
-O ambiente oficial para desenvolvimento no Fluig continua sendo o Eclipse Luna, conforme documentação oficial do Fluig.
+A proposta é preservar a experiência e os recursos da extensão original, adicionando uma integração com Git para registrar automaticamente as exportações realizadas no Fluig.
 
-## Instalação
+<a name="git"></a>
 
-Você pode procurar pela extensão `Fluig - Extensão para Desenvolvimento` no VSCode, baixá-la diretamente no [VS
-Code Market Place: Fluig - Extensão para Desenvolvimento](https://marketplace.visualstudio.com/items?itemName=Fluiggers.fluiggers-fluig-vscode-extension) ou abrir o __Quick Open__ (CTRL + P) e executar o
-comando `ext install fluiggers.fluiggers-fluig-vscode-extension`.
+🔗 Integração com Git
 
-### Erro de Linguagem não reconhecida
+A funcionalidade adicional permite registrar automaticamente uma exportação bem-sucedida, criar um commit e executar o push para um repositório remoto.
 
-Os snippets para a linguagem FreeMarker (extensão ftl e utilizada nos templates) pode gerar erro de
-linguagem não reconhecida caso o VSCode não tenha alguma extensão para tratar FreeMarker.
+Dessa forma, o histórico de exportações pode ser acompanhado diretamente pelo GitHub, sem precisar registrar cada operação manualmente.
 
-## Como utilizar
+Como funciona
+<p align="center">
+  <br>
+  <img src="assets/FluigTrackerGifFlowIcon.gif" alt="Fluxo de exportação do Fluig com registro no Git" width="800" />
+  <div align="center"><br> <sub>Exportação da extensão original (Fluiggers) • commit e push automáticos pelo Fluig Tracker.</sub> </div>
+</p>
 
-Você deve abrir a pasta do seu projeto Fluig, já criado pelo Eclipse.
+Tecnologias e plataformas
+<p align="center"> <img src="assets/FluigTrackerIcon.png" alt="FluigTracker" height="48" /> <img src="https://skillicons.dev/icons?i=vscode,git,github&theme=dark" alt="Visual Studio Code, Git e GitHub" height="48" /> <img src="https://cdn.simpleicons.org/totvs" alt="TOTVS" height="48" /> </p> <p align="center"> </p>
 
-Caso não abra uma pasta a extensão não será inicializada, gerando erros de comando não encontrado.
+## Registro automático de exportações
 
-### ATENÇÃO
+Configure um repositório Git pelo menu do formulário. Após cada exportação concluída, o Tracker acrescenta uma linha ao arquivo activity.md, cria um commit e envia o histórico ao repositório configurado.
 
-__É importante que você abra somente um projeto por vez.__
+### 1. Configurar o repositório pelo menu
 
-O comportamento padrão do VSCode é trabalhar com um projeto por vez. Para se trabalhar com múltiplos projetos
-é necessário instalar extensões. Por isso essa extensão para Fluig foi desenvolvida pensando em um projeto
-por vez.
+<p align="center"><img src="./images/Registro_Log_1.png" width="1000" alt="Opção Configurar Repositório de Log no menu de contexto"></p>
 
-## Auto-Completar
+**Etapa:** selecione Configurar Repositório de Log, logo abaixo de Exportar Formulário. **Aviso:** abrir essa opção apenas inicia a configuração; ainda não registra uma exportação.
 
-Essa extensão cria os arquivos utilizando os tipos declarados na biblioteca [Declaração de Tipos
-para o Fluig](https://github.com/fluiggers/fluig-declaration-type) para ter auto-complete no
-VSCode, por isso é recomendado que ela seja instalada.
+### 2. Informar a URL ou o caminho do repositório
 
-Você pode instalar a __Declaração de Tipos para o Fluig__ baixando o último release disponibilizado no GitHub ou
-pode executar o comando `Fluig: Instalar Declarações de Tipo`, no __Command Palette__ (normalmente com a tecla de atalho F1),
-para que a Extensão baixe os arquivos para o seu workspace / diretório.
+<p align="center"><img src="./images/Registro_Log_2.png" width="1000" alt="Campo para URL ou caminho do repositório Git"></p>
 
-## Diagrama de Processos
+**Etapa:** informe uma URL Git HTTPS/SSH ou o caminho de um repositório Git local. **Aviso:** a conta precisa ter acesso de gravação. Configure a autenticação do Git no sistema e não coloque tokens ou senhas na URL.
 
-De forma **EXPERIMENTAL**, esssa extensão agora permite desenhar os diagramas de processo e exportá-los ao servidor Fluig.
+### 3. Confirmar o repositório configurado
 
-A intenção ao disponibilizar essa funcionalidade é permitir que os usuários auxiliem nossa comunidade,
-tanto ao indicar problemas como issues como auxiliar na programação em si.
+<p align="center"><img src="./images/Registro_Log_3.png" width="1000" alt="Mensagem de repositório configurado"></p>
 
-> **Não use essa funcionalidade em Produção**
+**Etapa:** a mensagem confirma que o destino foi salvo. **Aviso:** ela não confirma um commit; o registro só acontece depois de uma exportação bem-sucedida.
 
-Não é preciso Eclipse, Fluig Studio nem Java: o `ecm30.xml` é gerado pela própria extensão. Na
-exportação, a versão do Fluig é lida do servidor; ao salvar, vale a configuração
-`fluiggers.fluigRuntimeVersion` (vazia = gera todos os campos, como para um servidor de versão desconhecida).
+### 4. Verificar a confirmação da exportação
 
+<p align="center"><img src="./images/Registro_Log_4.png" width="1000" alt="Notificação de exportação registrada"></p>
 
-## Funcionalidades da Extensão
+**Etapa:** após a exportação, a notificação confirma o registro. **Aviso:** ela aparece quando o commit e o envio ao remoto terminam com sucesso.
 
-Após abrir a pasta do projeto Fluig as seguintes funcionalidades serão disponibilizadas:
+### 5. Consultar o commit no GitHub
 
-- [Editor visual de processos BPMN](#editor-visual-de-processos-bpmn)
-- [Gerenciar Servidores](#gerenciar-servidores)
-- [Consultar Dataset](#consultar-dataset)
-- [Novo Dataset](#novo-dataset)
-- [Importar Dataset e Importar Vários Datasets](#importar-dataset)
-- [Exportar Dataset e Exportar Vários Datasets](#exportar-dataset)
-- [Novo Formulário](#novo-formulário)
-- [Novo Evento de Formulário](#novo-evento-de-formulário)
-- [Importar Formulário e Importar Vários Formulários](#importar-formulário)
-- [Exportar Formulário](#exportar-formulário)
-- [Novo Evento de Processo](#novo-evento-de-processo)
-- [Exportar Evento de Processo](#exportar-evento-de-processo)
-- [Novo Evento Global](#novo-evento-global)
-- [Importar Evento Global e Importar Vários Eventos Globais](#importar-evento-global)
-- [Exportar Evento Global](#exportar-evento-global)
-- [Excluir Evento Global](#excluir-evento-global)
-- [Novo Mecanismo Customizado](#novo-mecanismo-customizado)
-- [Importar Mecanismo de Atribuição Customizado](#importar-mecanismo-de-atribuição-customizado)
-- [Exportar Mecanismo de Atribuição Customizado](#exportar-mecanismo-de-atribuição-customizado)
-- [Novo Widget](#novo-widget)
-- [Exportar Widget](#exportar-widget)
-- [Exportar Fluiggers Widget](#exportar-fluiggers-widget)
-- [Importar Widget](#importar-widget)
-- [Snippets para HTML](#snippets-para-html)
-- [Snippets para JavaScript](#snippets-para-javascript)
+<p align="center"><img src="./images/Registro_Log_5.png" width="1000" alt="Commit de histórico de exportações no GitHub"></p>
 
-## Editor visual de processos BPMN
+**Etapa:** o histórico mostra o commit e a linha de activity.md. **Aviso:** o Tracker envia o histórico e os atributos de merge relacionados, não os arquivos-fonte do projeto Fluig.
 
-Arquivos `.process` abrem diretamente no editor visual Fluig BPMN, agora incorporado a esta extensão. O editor permite visualizar, criar, conectar, mover e configurar elementos do processo preservando o formato usado pelo Fluig Studio.
+## Créditos à comunidade Fluiggers
 
-Os comandos `Fluig BPMN: Validar processo`, `Fluig BPMN: Gerar arquivos de tradução` e `Fluig BPMN: Abrir processo como texto` ficam disponíveis na Paleta de Comandos. O diretório de backup pode ser alterado pela configuração `fluiggers.bpmnBackupDirectory`.
+<p align="center"><img src="./images/icon.png" width="96" alt="Ícone da comunidade Fluiggers"> &nbsp; → &nbsp; <img src="./images/FluigTrackerGrey.png" width="96" alt="Logo do Fluig Tracker"></p>
 
-O host do editor faz parte do build TypeScript da extensão. Os arquivos de interface em `media/bpmn` continuam em JavaScript e CSS porque são executados na webview isolada do VS Code. A antiga extensão BPMN separada não deve permanecer instalada junto com este pacote, pois ambas registram o mesmo editor customizado.
+A seta representa a evolução da extensão original da comunidade Fluiggers para o Fluig Tracker. **Nada disso seria possível sem a extensão original.** O ícone colorido do Fluig Tracker é usado como ícone da extensão; a versão cinza aparece na barra lateral do VS Code.
 
-## Gerenciar Servidores
+<a name="instalacao"></a>
 
-Com a extensão instalada será adicionada a visão de gerenciamento de servidores. Nela é possível
-adicionar, editar e remover servidores Fluig.
+📦 Instalação
 
-A senha é criptografada utilizando identificadores do computador como chave da criptografia, assim não é possível
-decifrar a senha em outro computador, prevenindo a perda de credenciais.
+A instalação é feita manualmente por meio do pacote .vsix.
 
-Há a opção de indicar que efetuará o login via Navegador. Essa opção é útil para os casos que configurou MFA no Fluig.
+Etapa	Instrução
+01	Acesse a seção Releases.
+02	Baixe o arquivo .vsix da versão desejada.
+03	Abra o Visual Studio Code.
+04	Pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>.
+05	Execute Extensions: Install from VSIX....
+06	Selecione o arquivo baixado.
+<details> <summary><b>💻 Prefere o terminal?</b></summary> <br />
+bash
+code --install-extension caminho/do/arquivo.vsix
+</details>
 
-Ao clicar em um servidor é possível visualizar alguns comandos disponíveis. Com eles podemos consultar dataset, serviços etc.
+[!NOTE] Configure o destino pelo comando Configurar Repositório de Log. O endereço, a autenticação e as permissões são definidos no ambiente de cada usuário.
 
-Por padrão o arquivo de configuração é salvo na pasta `.vscode` do seu Workspace, porém é possível alterar o local de salvamento
-do arquivo de configuração de servidores, bastando clicar no icone de edição (ao lado do botão "Adicionar Servidor"). Caso já tenha
-um arquivo de configuração pode copiá-lo para o novo local e só configurar o VS Code para apontar para ele. Arquivos existentes não
-serão apagados ao serem selecionados, diferente do alerta que o VS Code emite.
+<a name="creditos"></a>
 
-### Consultar Dataset
+🧩 Créditos e projeto de origem
 
-Ao clicar no servidor será disponibilizada a opção Dataset. Nela você pode consultar um dataset do servidor.
+Projeto baseado na extensão Fluig — Extensão para Desenvolvimento, criada pela comunidade Fluiggers.
 
-A consulta de Dataset permite configurar as Constraints, selecionar os campos a serem exibidos e também a ordenação.
+<div align="center">
 
-Diferente do plugin do Eclipse a Consulta de Dataset permite informar uma Constraint que não seja um campo do Dataset,
-sendo útil para consulta de Pai Filho ou de Datasets que aceitam Constraints que não são campos retornados.
+Fluiggers
 
-Diferente do Plugin do Eclipse é possível efetuar várias consultas aos Datasets, cada consulta em sua aba.
+</div>
 
-## Novo Dataset
+[!NOTE] Esta é uma iniciativa independente, sem vínculo oficial com a TOTVS nem representação oficial da equipe Fluiggers.
 
-Esse comando cria um arquivo JavaScript, após você preencher o nome do Dataset, no diretório
-`datasets` do seu projeto Fluig.
+<div align="center">
 
-O arquivo vem com as quatro funções básicas de datasets que o Fluig disponibiliza.
+<strong>Desenvolvido com 💙 pela comunidade.</strong><br /> <sub>Fluig + Visual Studio Code + Git + GitHub</sub>
 
-Você pode executar esse comando no __Command Palette__, no menu de contexto no __File Explorer__ ou pelo
-atalho __CTRL + F10__ (CMD + F10 no Mac).
+<br />
 
-## Importar Dataset
+<a href="#top">⬆ Voltar ao topo</a>
 
-Para importar Dataset (ou vários) é necessário clicar com o botão direito do mouse em qualquer
-lugar do __File Explorer__ ou usar o __Command Pallete__ (pressionando F1) e então selecionar um
-dos comandos de importação (`Fluig: Importar Dataset` ou `Fluig: Importar Vários Datasets`).
-
-Após selecionar o servidor é exibido a lista de Datasets do servidor para selecionar qual/quais
-serão importados.
-
-## Exportar Dataset
-
-Para exportar Dataset clique com o botão direito do mouse sobre o Dataset e selecione `Exportar Dataset` ou,
-enquanto editando o dataset, utilize o atalho __CTRL + F9__ (CMD + F9 no Mac).
-
-Após selecionar o servidor você poderá escolher um dos datasets listados para efetuar uma edição ou
-selecionar a opção __Novo Dataset__ para criar o Dataset no servidor.
-
-Também é possível exportar múltiplos datasets de uma só vez clicando com o botão direito em uma pasta dentro do diretório `datasets`.
-A extensão irá procurar recursivamente por todos os datasets dentro da pasta selecionada e suas subpastas, permitindo que você
-exporte todos eles de uma vez para o servidor selecionado (antes é necessário selecionar os datasets).
-Caso execute esse comando pelo __Command Pallete__ (pressionando F1) a extensão entenderá que quer exportar todos os datasets do projeto.
-É possível informar que deseja escrever a descrição dos novos datasets (se indicar em não o id do dataset será a sua descrição). Os
-datasets já existentes no servidor manterão a sua descrição original.
-
-## Novo Formulário
-
-Esse comando cria, após preencher o nome, um diretório contendo um arquivo HTML de formulário.
-Esse diretório é criado dentro do diretório `forms` do seu projeto Fluig.
-
-O arquivo HTML vem com o esqueleto básico de um formulário Fluig utilizando o __Fluig Style Guide__.
-
-Você pode executar esse comando no __Command Palette__, no menu de contexto no __File Explorer__ ou pelo
-atalho __CTRL + F11__ (CMD + F11 no Mac).
-
-É importante manter o nome do arquivo HTML do formulário igual ao nome da pasta do formulário para que a extensão
-identifique qual arquivo HTML é a definição do formulário (diferente do Eclipse no qual podemos indicar ao invés
-de ser padronizado).
-
-## Novo Evento de Formulário
-
-Esse comando cria um arquivo JavaScript, após selecionar o evento, no diretório `events` do
-formulário selecionado.
-
-Esse comando é exibido no menu de contexto no __File Explorer__ ao selecionar um __Formulário__
-ou qualquer arquivo / diretório que esteja dentro de um formulário. També é possível utilizar com o
-atalho __CTRL + F12__ (CMD + F12 no Mac) enquanto estiver editando algum arquivo do formulário.
-
-O arquivo JavaScript contém a estrutura da função do evento selecionado.
-
-## Importar Formulário
-
-Para importar Formulário é necessário clicar com o botão direito do mouse em qualquer lugar do
-__File Explorer__ ou usar o __Command Pallete__ (pressionando F1) e então selecionar o comando de
-importação (`Fluig: Importar Formulário` ou `Fluig: Importar Vários Formulários`).
-
-Após selecionar o servidor é exibido a lista de Formulários do servidor para selecionar qual/quais serão
-importados.
-
-A extensão não insere o "ID" do formulário no nome da pasta, como  Eclipse faz, justamente por usar o nome
-da pasta como padrão de nomenclatura para encontrar o arquivo principal. Além disso inserir o ID no nome só
-dificulta quando tratando com ambientes diferentes (homologação/produção).
-
-## Exportar Formulário
-
-Para exportar um formulário clique com o botão direito do mouse sobre o Formulário e selecione a opção `Exportar Formulário`
-ou, enquanto edita qualquer arquivo do formulário, utilize o atalho __CTRL + F9__ (CMD + F9 no Mac).
-
-Após selecionar o servidor você poderá escolher um dos formulários listados para efetuar uma edição ou selecionar a opção
-__Novo Formulário__ para criar um formulário no servidor.
-
-Ao criar um formulário você deve indicar o ID da pasta onde ele será salvo (não há opção de pesquisar pastas igual ao Eclipse),
-indicar um nome de Dataset para o formulário e o modo de persistência (em uma tabela própria ou numa única tabela).
-
-Ao editar um formulário você pode indicar se deve ou não atualizar a versão.
-
-É obrigatório que o nome do arquivo HTML seja igual ao nome do diretório em que está armazenado (o nome do formulário no servidor
-é indiferente), pois é isso que determina qual é o arquivo principal do formulário.
-
-## Novo Evento de Processo
-
-Esse comando cria um arquivo JavaScript, após selecionar o evento, no diretório `workflow/scripts`
-do seu projeto Fluig.
-
-Esse comando é exibido no menu de contexto no __File Explorer__ ao selecionar um __Diagrama__,
-que são arquivos com a extensão __.process__ e estão no diretório `workflow/diagrams`, ou ao selecionar um evento de
-processo, que são arquivos .js que estão em `workflow/scripts`. Também é possível acionar o comando com o atalho
-__CTRL + F12__ (CMD + F12 no Mac) enquanto estiver editando um evento de processo.
-
-O arquivo JavaScript será nomeado seguindo a regra do Fluig (nome_do_diagrama.nome_do_evento.js) e
-contém a estrutura da função do evento selecionado.
-
-É possível criar uma função compartilhada para o processo selecionando a opção __Nova Função__ no
-menu de eventos. Quando o fizer será solicitado que informe o nome da função.
-
-## Exportar Evento de Processo
-
-Esse comando permite enviar para o servidor Fluig os eventos de Processo, atualizando/criando esses
-eventos sem a necessidade de aumentar a versão do Processo.
-
-Utilize esse comando para agilizar no desenvolvimento dos eventos e para correções pontuais em Produção. Efetue
-essas correções somente nos casos que são erros nos quais ter que aumentar a versão do processo e efetuar a
-conversão de diversas solicitações será um problema.
-
-Também é possível indicar uma versão mais antiga do processo, efetuando alguma correção retroativa.
-
-Esse comando é exibido no menu de contexto ao selecionar um evento de processo, que são arquivos .js que estão
-em `workflow/scripts`. Também é possível acionar o comando com o atalho __CTRL + F9__ (CMD + F9 no Mac)
-enquanto estiver editando um evento de processo.
-
-É necessário que a `FluiggersWidget` esteja presente no servidor Fluig. Leia [Exportar Fluiggers Widget](#exportar-fluiggers-widget).
-
-## Novo Evento Global
-
-Esse comando cria um arquivo JavaScript, após selecionar o evento, no diretório `events` do seu
-projeto Fluig.
-
-O arquivo JavaScript contém a estrutura da função do evento selecionado.
-
-Você pode executar esse comando no __Command Palette__ ou com o menu de contexto no __File Explorer__.
-
-## Importar Evento Global
-
-Para importar Evento Global é necessário clicar com o botão direito do mouse em qualquer lugar do
-__File Explorer__ ou usar o __Command Pallete__ (pressionando F1) e então selecionar o comando de
-importação (`Fluig: Importar Evento Global` ou `Fluig: Importar Vários Eventos Globais`).
-
-Após selecionar o servidor é exibido a lista de Eventos Globais do servidor para selecionar qual/quais serão
-importados.
-
-## Exportar Evento Global
-
-Para exportar um Evento Global clique com o botão direito do mouse sobre o Evento e selecione a opção `Exportar Evento Global`
-ou, enquanto edita o arquivo de evento, utilize o atalho __CTRL + F9__ (CMD + F9 no Mac).
-
-Após selecionar o servidor o evento será exportado automaticamente.
-
-## Excluir Evento Global
-
-Para excluir um Evento Global deve-se usar o __Command Pallete__ (pressionando F1) e então selecionar o comando de
-exclusão (`Fluig: Excluir Evento Global`).
-
-Selecione os eventos que serão excluídos.
-
-### CUIDADO
-
-Não é possível desfazer esa ação. Então tenha em mente que é recomendado ter um backup dos eventos no seu projeto.
-
-## Novo Mecanismo Customizado
-
-Esse comando cria um arquivo JavaScript, após você preencher o nome do Mecanismo, no diretório
-`mechanisms` do seu projeto Fluig.
-
-O arquivo vem com a função padrão que retorna os usuários que podem ser selecionados pelo
-mecanismo de atribuição.
-
-Você pode executar esse comando no __Command Palette__ e no menu de contexto no __File Explorer__.
-
-## Importar Mecanismo de Atribuição Customizado
-
-Para importar Mecanismo de Atribuição Customizado é necessário clicar com o botão direito do mouse em qualquer lugar do
-__File Explorer__ ou usar o __Command Pallete__ (pressionando F1) e então selecionar o comando de importação
-(`Fluig: Importar Mecanismo Customizado` ou `Fluig: Importar Vários Mecanismos Customizados`).
-
-Após selecionar o servidor é exibido a lista de Mecanismos Customizados do servidor para selecionar qual/quais serão
-importados.
-
-## Exportar Mecanismo de Atribuição Customizado
-
-Para exportar um Mecanismo de Atribuição Customizado clique com o botão direito do mouse sobre o mecanismo e selecione a
-opção `Exportar Mecanismo Customizado` ou, enquanto edita o arquivo do mecanismo, utilize o atalho __CTRL + F9__ (CMD + F9 no Mac).
-
-Após selecionar o servidor será solicitado que informe um código, nome e descrição ao mecanismo customizado.
-
-## Novo Widget
-
-Esse comando cria uma estrutura básica de widget, após você preencher o nome do Widget, no
-diretório `wcm/widget`.
-
-Você pode executar esse comando no __Command Palette__ e no menu de contexto no __File Explorer__.
-
-## Exportar Widget
-
-Para exportar Widget clique com o botão direito do mouse sobre a Widget, ou qualquer arquivo da Widget,
-e selecione `Exportar Widget` ou, enquanto editando a Widget, utilize o atalho __CTRL + F9__ (CMD + F9 no Mac).
-
-Após selecionar o servidor o Widget será exportado automaticamente.
-
-Diferente do Eclipse não o arquivo `.war` não permanecerá salvo na pasta target do widget.
-
-## Exportar Fluiggers Widget
-
-Esse comando é executado somente no __Command Palette__. Ele exporta para o servidor Fluig a widget
-[FluiggersWidget](https://github.com/fluiggers/fluig-widget-helper). Com ela será possível executar
-comandos no Fluig que não existiam, como a opção de Importar Widgets.
-
-Após selecionar o servidor o Widget será exportado automaticamente.
-
-## Importar Widget
-
-Esse comando é executado somente no __Command Palette__. Ele importa as widgets selecionadas do servidor
-escolhido.
-
-É necessário que a `FluiggersWidget` esteja presente no servidor Fluig.
-
-## Snippets para HTML
-
-Snippets para criar estruturas HTML seguindo o __Fluig Style Guide__.
-
-Os snippets disponibilizados são:
-
-- __fluig-alert__: Cria um alerta;
-- __fluig-alert-dismissible__: Cria um alerta que pode ser fechado;
-- __fluig-button-dropdown-split__: Cria um botão com sub menu;
-- __fluig-checkbox__: Cria um input customizado do tipo checkbox;
-- __fluig-checkbox-inline__: Cria um input customizado inline do tipo checkbox;
-- __fluig-checkbox-switch__: Cria um checkbox switch;
-- __fluig-input-data__: cria uma coluna com input do tipo texto e ícone de calendário;
-- __fluig-input-text__: cria uma coluna contendo um input do tipo texto;
-- __fluig-input-textarea__: cria uma coluna contendo um textarea;
-- __fluig-input-zoom__: cria uma coluna contendo um Zoom;
-- __fluig-pai-filho__: Cria uma tabela Pai Filho;
-- __fluig-pai-filho-nobuttons__: Cria uma tabela Pai Filho sem os botões padrões de adicionar e remover;
-- __fluig-pai-filho-panel__: Cria uma tabela Pai Filho usando componente Panel
-- __fluig-panel__: cria um painel;
-- __fluig-panel-collapse__: cria um painel com estrutura de collapse;
-- __fluig-radio__: Cria um input customizado do tipo radio;
-- __fluig-radio-inline__: Cria um input customizado inline do tipo radio;
-- __fluig-switch-aprovacao__: cria uma linha contendo dois botões para indicar aprovação / reprovação;
-- __fluig-tabs__: Cria uma navegação em Abas;
-
-## Snippets para JavaScript
-
-Devido ao Fluig utilizar JavaScript para front-end (navegador) e JavaScript para back-end que será
-convertido em Java (e possui um suporte antigo) na descrição de cada snippet é indicado se ele deve
-ser utilizado em qual dos dois ambientes.
-
-### Snippets para Back-End
-
-- __fluig-consulta-jdbc__: cria uma consulta direta ao Banco de Dados usando JDBC;
-- __fluig-consulta-jdbc-prepared__: cria uma consulta direta ao Banco de Dados usando JDBC e PreparedStatement;
-- __fluig-function-data__: cria uma função que retorna a data atual formatada no padrão solicitado;
-- __fluig-paifilho-loop__: cria um loop for percorrendo os elementos de uma tabela pai filho em evento de Formulário;
-- __fluig-paifilho-loop-workflow__: cria um loop for percorrendo os elementos de uma tabela pai filho em evento de Processo;
-- __fluig-soap-card-create__: cria uma instância do SOAP ECMCardService com alguns itens preenchidos para criar um registro no formulário;
-- __fluig-soap-card-update__: cria uma instância do SOAP ECMCardService com alguns itens preenchidos para editar um registro do formulário;
-
-### Snippets para Front-End
-
-- __fluig-beforeMovementOptions__: Evento beforeMovementOptions do formulário no Processo;
-- __fluig-beforeSendValidate__: Evento beforeSendValidate do formulário no Processo;
-- __fluig-calendar__: Ativa o plugin de Data em um input text;
-- __fluig-data-atual__: Pega a data atual formatada em PT-BR;
-- __fluig-zoom-removed__: Função executada ao desmarcar item no Zoom;
-- __fluig-zoom-selected__: Função executada ao selecionar item no Zoom;
-- __fluig-dataset-async__: Chamar Dataset de modo Assíncrono;
-- __fluig-modal__: Criar modal do Fluig;
-- __fluig-widget__: Criar o esqueleto de uma Widget com itens privados;
-
-## Gerador ECM30
-
-O `ecm30.xml` que o Fluig recebe no deploy é gerado pela extensão, em TypeScript, a cada save do `.process`
-e antes de cada exportação, no formato do Fluig Studio para a versão do servidor (1.4.4 em diante, com os
-campos de cada versão). A conformidade é conferida em `test/core/ecm30.test.js` contra a saída do Studio para
-as fixtures públicas do projeto, em todas as versões.
-
-## Contribuindo com o Projeto
-
-Sinta-se à vontade para colaborar criando mais snippets, templates de arquivos e comandos.
-
-Basta criar um fork e efetuar uma PR quando estiver pronto.
-
-### Contribuidores
-
-- [Bruno Gasparetto](https://github.com/brunogasparetto)
-- [Bruno T. Araujo](https://github.com/brunotda)
-- [Daniel Bom Conselho Sales](https://github.com/danielbomconselho)
-- [Isaac Figueiredo](https://github.com/isacfg)
-- [Jhonatan Serafim](https://github.com/jhonnytuba)
-- [Matheus Mósso](https://github.com/msmosso)
-- [Pedro Costa](https://github.com/pedro-costa-neto)
+</div>

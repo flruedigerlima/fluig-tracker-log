@@ -51,7 +51,7 @@ export class WorkflowProcessScaffoldService {
                 await vscode.workspace.fs.writeFile(uri, Buffer.from(file.content, "ascii"));
             }
 
-            await vscode.commands.executeCommand("vscode.openWith", processUri, "fluigBpmn.processEditor");
+            await vscode.commands.executeCommand("vscode.openWith", processUri, "fluigTracker.processEditor");
             void vscode.window.showInformationMessage(
                 `Processo ${code} criado em workflow/diagrams com traducoes pt_BR, en_US e es.`
             );

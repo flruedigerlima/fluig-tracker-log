@@ -4,12 +4,12 @@ import { WidgetService } from "../services/WidgetService";
 export class WidgetExtension {
     public static activate(context: ExtensionContext): void {
         context.subscriptions.push(commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newWidget",
+            "fluig-tracker-vscode-extension.newWidget",
             WidgetService.create
         ));
 
         context.subscriptions.push(commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportWidget",
+            "fluig-tracker-vscode-extension.exportWidget",
             function (fileUri: Uri) {
                 // Ativado pela Tecla Atalho
                 if (!fileUri) {
@@ -25,12 +25,12 @@ export class WidgetExtension {
         ));
 
         context.subscriptions.push(commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importWidget",
+            "fluig-tracker-vscode-extension.importWidget",
             WidgetService.import
         ));
 
         context.subscriptions.push(commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportFluiggersWidget",
+            "fluig-tracker-vscode-extension.exportFluiggersWidget",
             WidgetService.exportFluiggersWidget
         ));
     }

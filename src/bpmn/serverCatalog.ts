@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('node:path');
+const { getFluigTrackerSetting } = require('./configuration');
 const { projectRootForProcessPath } = require('./nodeReferenceScanner');
 
 function extractServerCatalog(jsonText) {
@@ -48,7 +49,7 @@ function matchesServer(configuration, requestedValue) {
 
 function configuredServerPath(vscode, processUri, projectRoot) {
   try {
-    const configured = String(vscode.workspace.getConfiguration('fluiggers', processUri).get('serverConfigPath', '') ?? '').trim();
+    const configured = String(getFluigTrackerSetting(vscode, 'serverConfigPath', '', processUri) ?? '').trim();
     if (!configured) return '';
     const expanded = configured.replace(/\$\{workspaceFolder\}/g, projectRoot);
     return path.isAbsolute(expanded) ? expanded : path.resolve(projectRoot, expanded);

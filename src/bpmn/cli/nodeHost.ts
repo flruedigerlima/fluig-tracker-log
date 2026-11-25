@@ -50,7 +50,9 @@ function createNodeHost(options) {
       },
       getWorkspaceFolder: () => ({ uri: workspaceRoot, name: path.basename(workspaceRoot.fsPath), index: 0 }),
       getConfiguration: (section) => ({
-        get: (key, fallback) => settings[`${section}.${key}`] ?? fallback
+        get: (key, fallback) => settings[`${section}.${key}`]
+          ?? (section === 'fluigTracker' ? settings[`fluiggers.${key}`] : undefined)
+          ?? fallback
       })
     }
   };
@@ -69,7 +71,7 @@ function editorDataDirectories(environment = process.env, platform = process.pla
 }
 
 /**
- * Configurações `fluiggers.*` como o editor as veria: o settings.json do projeto vence o do usuário.
+ * Configurações `fluigTracker.*` (com fallback `fluiggers.*`) como o editor as veria: o projeto vence o usuário.
  * @param {string} workspaceRoot
  */
 function readFluiggersSettings(workspaceRoot, dataDirectories = editorDataDirectories()) {
@@ -85,8 +87,15 @@ function readFluiggersSettings(workspaceRoot, dataDirectories = editorDataDirect
     } catch {
       continue;
     }
-    for (const [key, value] of Object.entries(parsed ?? {})) {
-      if (key.startsWith('fluiggers.')) settings[key] = value;
+    const entries = Object.entries(parsed ?? {});
+    for (const [key, value] of entries) {
+      if (key.startsWith('fluiggers.')) {
+        settings[key] = value;
+        settings[key.replace(/^fluiggers\./, 'fluigTracker.')] = value;
+      }
+    }
+    for (const [key, value] of entries) {
+      if (key.startsWith('fluigTracker.')) settings[key] = value;
     }
   }
   return settings;

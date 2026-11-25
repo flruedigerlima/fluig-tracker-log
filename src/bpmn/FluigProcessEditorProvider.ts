@@ -7,6 +7,7 @@ const zlib = require('node:zlib');
 const { parseProcess } = require('./processModel');
 const { renderProcessImageSvg } = require('./processImage');
 const { WorkflowProcessArtifactService } = require('../services/WorkflowProcessArtifactService');
+const { getFluigTrackerSetting } = require('./configuration');
 const {
   convertTaskType,
   createConnectedEndEvent,
@@ -71,7 +72,7 @@ const {
 } = require('./processIdentity');
 
 class FluigProcessEditorProvider {
-  static viewType = 'fluigBpmn.processEditor';
+  static viewType = 'fluigTracker.processEditor';
 
   /** @param {vscode.ExtensionContext} context */
   constructor(context) {
@@ -366,11 +367,11 @@ class FluigProcessEditorProvider {
 
   /**
    * Instala no projeto o atalho da CLI e as instruções para agentes de código. Roda ao abrir um
-   * processo e só grava o que mudou; `fluiggers.bpmnAgentKit` desliga.
+   * processo e só grava o que mudou; `fluigTracker.bpmnAgentKit` desliga.
    */
   installAgentKit(processUri) {
     if (processUri.scheme !== 'file') return;
-    if (!vscode.workspace.getConfiguration('fluiggers', processUri).get('bpmnAgentKit', true)) return;
+    if (!getFluigTrackerSetting(vscode, 'bpmnAgentKit', true, processUri)) return;
     const projectRoot = projectRootForProcessPath(processUri.fsPath);
     if (!projectRoot) return;
     try {

@@ -33,7 +33,7 @@ export class BpmnEditorExtension {
                     supportsMultipleEditorsPerDocument: true
                 }
             ),
-            vscode.commands.registerCommand("fluigBpmn.openText", async () => {
+            vscode.commands.registerCommand("fluigTrackerBpmn.openText", async () => {
                 const uri = vscode.window.activeTextEditor?.document.uri
                     ?? BpmnEditorExtension.activeTabUri();
                 if (!uri) {
@@ -43,15 +43,15 @@ export class BpmnEditorExtension {
                 await vscode.commands.executeCommand("vscode.openWith", uri, "default");
             }),
             vscode.commands.registerCommand(
-                "fluigBpmn.validate",
+                "fluigTrackerBpmn.validate",
                 () => provider.validateActiveDocument()
             ),
             vscode.commands.registerCommand(
-                "fluigBpmn.generateTranslations",
+                "fluigTrackerBpmn.generateTranslations",
                 () => provider.generateActiveTranslations()
             ),
             vscode.commands.registerCommand(
-                "fluigBpmn.exportPng",
+                "fluigTrackerBpmn.exportPng",
                 (processUri?: vscode.Uri) => provider.exportActivePng(processUri)
             )
         );

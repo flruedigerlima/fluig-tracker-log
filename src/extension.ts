@@ -8,6 +8,7 @@ import { WorkflowExtension } from "./extensions/WorkflowExtension";
 import { GlobalEventExtension } from "./extensions/GlobalEventExtension";
 import { ServerExtension } from "./extensions/ServerExtension";
 import { BpmnEditorExtension } from "./extensions/BpmnEditorExtension";
+import { LogRepositoryExtension } from "./extensions/LogRepositoryExtension";
 
 export function activate(context: ExtensionContext) {
     if (!workspace.workspaceFolders) {
@@ -21,6 +22,7 @@ export function activate(context: ExtensionContext) {
     WidgetExtension.activate(context);
     WorkflowExtension.activate(context);
     GlobalEventExtension.activate(context);
+    LogRepositoryExtension.activate(context);
     ServerExtension.activate(context);
     BpmnEditorExtension.activate(context);
 }

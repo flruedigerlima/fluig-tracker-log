@@ -8,23 +8,23 @@ export class GlobalEventExtension {
 
     public static activate(context: vscode.ExtensionContext): void {
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.newGlobalEvent",
+            "fluig-tracker-vscode-extension.newGlobalEvent",
             GlobalEventExtension.createGlobalEvent
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.exportGlobalEvent",
+            "fluig-tracker-vscode-extension.exportGlobalEvent",
             GlobalEventExtension.exportGlobalEvent
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importManyGlobalEvent",
+            "fluig-tracker-vscode-extension.importManyGlobalEvent",
             GlobalEventService.importMany
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.importGlobalEvent",
+            "fluig-tracker-vscode-extension.importGlobalEvent",
             GlobalEventService.import
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.deleteGlobalEvent",
+            "fluig-tracker-vscode-extension.deleteGlobalEvent",
             GlobalEventService.delete
         ));
     }

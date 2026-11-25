@@ -5,6 +5,7 @@ import { ServerConfig } from "../models/ServerConfig";
 import { ServerDTO } from "../models/ServerDTO";
 import { Server } from "../models/Server";
 import { UserService } from './UserService';
+import { getFluigTrackerSetting } from './FluigTrackerConfigurationService';
 
 const SERVER_CONFIG_VERSION = '1.0.0';
 
@@ -230,8 +231,7 @@ export class ServerService {
     }
 
     private static getConfigPath(): string {
-        const config = workspace.getConfiguration('fluiggers');
-        let customPath = config.get<string>('serverConfigPath', "");
+        let customPath = getFluigTrackerSetting('serverConfigPath', "");
 
         if (customPath != "") {
             return customPath;

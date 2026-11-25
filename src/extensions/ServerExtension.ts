@@ -10,30 +10,30 @@ export class ServerExtension {
         }
 
         const serverItemProvider = new ServerItemProvider(context);
-        vscode.window.registerTreeDataProvider("fluiggers-fluig-vscode-extension.servers", serverItemProvider);
+        vscode.window.registerTreeDataProvider("fluig-tracker-vscode-extension.servers", serverItemProvider);
 
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.addServer",
+            "fluig-tracker-vscode-extension.addServer",
             () => serverItemProvider.add()
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.changeServerConfigPath",
+            "fluig-tracker-vscode-extension.changeServerConfigPath",
             () => serverItemProvider.changeConfigPath()
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.refreshServer",
+            "fluig-tracker-vscode-extension.refreshServer",
             () => serverItemProvider.refresh()
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.editServer",
+            "fluig-tracker-vscode-extension.editServer",
             (serverItem: ServerItem) => serverItemProvider.update(serverItem)
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.deleteServer",
+            "fluig-tracker-vscode-extension.deleteServer",
             (serverItem: ServerItem) => serverItemProvider.delete(serverItem)
         ));
         context.subscriptions.push(vscode.commands.registerCommand(
-            "fluiggers-fluig-vscode-extension.datasetView",
+            "fluig-tracker-vscode-extension.datasetView",
             (datasetItem: DatasetItem) => serverItemProvider.datasetView(datasetItem)
         ));
     }

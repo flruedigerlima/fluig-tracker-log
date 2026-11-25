@@ -1,6 +1,7 @@
 'use strict';
 
 const crypto = require('node:crypto');
+const { getFluigTrackerSetting } = require('./configuration');
 
 class BackupService {
   constructor() {
@@ -52,8 +53,7 @@ class BackupService {
   async writeBackup(vscode, ownerDocument, fileName, bytes) {
     const workspaceFolder = vscode.workspace.getWorkspaceFolder(ownerDocument.uri);
     const root = workspaceFolder?.uri ?? vscode.Uri.joinPath(ownerDocument.uri, '..');
-    const configured = vscode.workspace.getConfiguration('fluiggers', ownerDocument.uri)
-      .get('bpmnBackupDirectory', '.fluig-bpmn/backups');
+    const configured = getFluigTrackerSetting(vscode, 'bpmnBackupDirectory', '.fluig-bpmn/backups', ownerDocument.uri);
     const segments = normalizeRelativeDirectory(configured);
     const backupDirectory = vscode.Uri.joinPath(root, ...segments);
     await vscode.workspace.fs.createDirectory(backupDirectory);
